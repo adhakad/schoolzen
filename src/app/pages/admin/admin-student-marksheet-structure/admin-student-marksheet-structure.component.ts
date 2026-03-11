@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminStudentMarksheetStructureComponent implements OnInit, AfterViewInit {
   private isBrowser: boolean = isPlatformBrowser(this.platformId);
   examResultForm: FormGroup;
-  disabled:boolean = true;
+  disabled: boolean = true;
   showModal: boolean = false;
   updateMode: boolean = false;
   deleteMode: boolean = false;
@@ -35,19 +35,19 @@ export class AdminStudentMarksheetStructureComponent implements OnInit, AfterVie
   loader: Boolean = true;
   isChecked!: Boolean;
   adminId: string = '';
-  
+
   // Add submission state management property
   isClick: boolean = false;
-  
+
   availableTemplates = [
-    { name: 'T1', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573664/T1_bqzgw1.jpg' },
-    { name: 'T2', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573792/T2_gqvlzs.jpg' },
-    { name: 'T3', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573816/T3_ckic7f.jpg' },
-    { name: 'T4', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573842/T4_ggp7wb.jpg' },
-    { name: 'T5', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573869/T5_jolapq.jpg' },
-    { name: 'T6', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573893/T6_q5f8qh.jpg' },
-    { name: 'T7', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573917/T7_bistg7.jpg' },
-    { name: 'T8', url: 'https://res.cloudinary.com/dzzrracge/image/upload/v1733573944/T8_p1ukhf.jpg' }
+    { name: 'T1', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990587/T1_n2mif8.jpg' },
+    { name: 'T2', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990603/T2_jtwvgd.jpg' },
+    { name: 'T3', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990623/T3_jhe49o.jpg' },
+    { name: 'T4', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990647/T4_lhyeow.jpg' },
+    { name: 'T5', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990661/T5_e8x7fw.jpg' },
+    { name: 'T6', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990676/T6_bte51v.jpg' },
+    { name: 'T7', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990701/T7_q5dgco.jpg' },
+    { name: 'T8', url: 'https://res.cloudinary.com/dcx9ttjuo/image/upload/v1772990722/T8_u8jaze.jpg' }
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private el: ElementRef, private fb: FormBuilder, public activatedRoute: ActivatedRoute, private toastr: ToastrService, private adminAuthService: AdminAuthService, private classSubjectService: ClassSubjectService, private examResultStructureService: ExamResultStructureService) {
@@ -57,7 +57,7 @@ export class AdminStudentMarksheetStructureComponent implements OnInit, AfterVie
       stream: [''],
       templateName: ['', Validators.required],
       templateUrl: ['', Validators.required],
-      createdBy:[''],
+      createdBy: [''],
     });
   }
 
@@ -164,7 +164,7 @@ export class AdminStudentMarksheetStructureComponent implements OnInit, AfterVie
     this.closeModal();
     this.getSingleClassMarksheetTemplateByStream(this.cls);
     setTimeout(() => {
-      this.toastr.success('',msg);
+      this.toastr.success('', msg);
     }, 500)
   }
 
@@ -206,7 +206,7 @@ export class AdminStudentMarksheetStructureComponent implements OnInit, AfterVie
     this.examResultForm.value.class = this.cls;
     this.examResultForm.value.stream = this.stream;
     this.examResultForm.value.createdBy = "Admin"
-    
+
     this.examResultStructureService.addExamResultStructure(this.examResultForm.value).subscribe((res: any) => {
       if (res) {
         this.isClick = false;

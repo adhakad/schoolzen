@@ -1,9 +1,9 @@
 'use strict';
 const axios = require('axios').default;
 const { MSG91_AUTH_KEY } = process.env;
-const MSG91_INTEGRATED_NUMBER = process.env.MSG91_INTEGRATED_NUMBER; // like "919691568729"
-const MSG91_NAMESPACE = process.env.MSG91_NAMESPACE; // from MSG91 template
-const MSG91_TEMPLATE_NAME = process.env.MSG91_TEMPLATE_NAME || "login_otp"; // approved template
+const MSG91_INTEGRATED_NUMBER = process.env.MSG91_INTEGRATED_NUMBER;
+const MSG91_NAMESPACE = process.env.MSG91_NAMESPACE;
+const MSG91_TEMPLATE_NAME = process.env.MSG91_TEMPLATE_NAME || "login_otp";
 
 const sendOtpWhatsappMessage = async (otp, phone) => {
     try {
@@ -67,12 +67,12 @@ const sendPlanPaymentConfirmation = async (phone, user_name, transaction_message
                 messaging_product: "whatsapp",
                 type: "template",
                 template: {
-                    name: "plan_payment_confirmation",
+                    name: "plan_payment_confirmation_template",
                     language: {
                         code: "en",
                         policy: "deterministic",
                     },
-                    namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
+                    // namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
                     to_and_components: [
                         {
                             to: [`91${phone}`],
@@ -147,12 +147,12 @@ const sendFeesConfirmationWithoutReceipt = async (phone, school_name, academic_y
                 messaging_product: "whatsapp",
                 type: "template",
                 template: {
-                    name: "fee_confirmation_without_reciept",
+                    name: "fee_confirmation_template",
                     language: {
                         code: "en",
                         policy: "deterministic"
                     },
-                    namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
+                    // namespace: "36f7c07e_a0b0_4240_bc4f_50b60b74ef66",
                     to_and_components: [
                         {
                             to: [`91${phone}`],
@@ -235,12 +235,12 @@ const sendManualFeeReminderMessage = async (phone, school_name, father_name, pen
                 messaging_product: "whatsapp",
                 type: "template",
                 template: {
-                    name: "fee_reminder",
+                    name: "fee_reminder_template",
                     language: {
                         code: "en",
                         policy: "deterministic"
                     },
-                    namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
+                    // namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
                     to_and_components: [
                         {
                             to: [`91${phone}`],
@@ -305,12 +305,12 @@ const sendIdCardOrder = async (phone, school_name, mobile_number, order_date) =>
                 messaging_product: "whatsapp",
                 type: "template",
                 template: {
-                    name: "id_card_order",
+                    name: "id_card_order_template",
                     language: {
                         code: "en",
                         policy: "deterministic",
                     },
-                    namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
+                    // namespace: "bc6d378a_4d7e_4e78_a870_75883411b711",
                     to_and_components: [
                         {
                             to: [`91${phone}`],
