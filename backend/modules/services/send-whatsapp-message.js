@@ -147,15 +147,15 @@ const sendFeesConfirmationWithoutReceipt = async (phone, school_name, academic_y
                 messaging_product: "whatsapp",
                 type: "template",
                 template: {
-                    name: "fee_confirmation_template",
+                    name: "fee_confirmations_t",
                     language: {
                         code: "en",
                         policy: "deterministic"
                     },
-                    // namespace: "36f7c07e_a0b0_4240_bc4f_50b60b74ef66",
+                    namespace: "36f7c07e_a0b0_4240_bc4f_50b60b74ef66",
                     to_and_components: [
                         {
-                            to: [`91${phone}`],
+                            to: `91${phone}`,
                             "components": {
                                 "body_1": {
                                     "type": "text",

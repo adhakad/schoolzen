@@ -587,7 +587,7 @@ export class StudentComponent implements OnInit {
         }
       }, err => {
         this.errorCheck = true;
-        this.errorMsg = err.error || 'An error occurred while updating student.';
+        this.errorMsg = err.error;
         this.isClick = false;
       })
     } else {
@@ -599,7 +599,7 @@ export class StudentComponent implements OnInit {
         }
       }, err => {
         this.errorCheck = true;
-        this.errorMsg = err.error || 'An error occurred while adding student.';
+        this.errorMsg = err.error;
         this.isClick = false;
       })
     }
@@ -635,7 +635,7 @@ export class StudentComponent implements OnInit {
       }
     }, err => {
       this.errorCheck = true;
-      this.errorMsg = err.error || 'An error occurred while deleting student.';
+      this.errorMsg = err.error;
       this.isClick = false;
     })
   }
@@ -1052,7 +1052,7 @@ export class StudentComponent implements OnInit {
 
     } catch (err: any) {
       this.errorCheck = true;
-      this.errorMsg = err.message || 'Validation error occurred.';
+      this.errorMsg = err.error;
       this.isClick = false;
       return;
     }
@@ -1074,7 +1074,7 @@ export class StudentComponent implements OnInit {
       },
       err => {
         this.errorCheck = true;
-        this.errorMsg = err.error?.message || 'Server error occurred during import.';
+        this.errorMsg = err.error;
         this.isClick = false;
       }
     );
