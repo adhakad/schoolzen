@@ -100,10 +100,10 @@ export class UpgradePlanPaymentComponent implements OnInit {
     this.paymentService.createPayment(paymentData).subscribe(
       (response: any) => {
         const options = {
-          key: 'rzp_test_5pxCVjGZq8W9HJ',
+          key: 'rzp_live_SMQMKG6pAOcVVq',
           amount: response.order.amount,
           currency: response.order.currency,
-          name: 'Schooliya',
+          name: 'Schoolzen',
           description: 'Payment for Your Product',
           image: '../../../../assets/logo.png',
           prefill: {

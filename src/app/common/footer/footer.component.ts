@@ -11,12 +11,12 @@ import { AdminAuthService } from 'src/app/services/auth/admin-auth.service';
 export class FooterComponent implements OnInit {
   currentYear: any;
   schoolInfo: any;
-  whatsapp: string = 'https://wa.me/919302798269';
-  facebook: string = 'https://www.facebook.com/profile.php?id=61563830046242';
-  linkedin: string = 'https://www.linkedin.com/company/schooliya-official';
-  instagram: string = 'https://www.instagram.com/schooliya_official';
-  youtube: string = 'https://www.youtube.com/@Schooliya-f8f';
-  softwareCompanyLink: string = 'https://schooliya.in';
+  whatsapp: string = 'https://wa.me/919893830679';
+  facebook: string = 'https://www.facebook.com/profile.php?id=61587578035485';
+  linkedin: string = 'https://www.linkedin.com/company/schoolzen';
+  instagram: string = 'https://www.instagram.com/schoolzen_official/';
+  youtube: string = 'https://www.youtube.com/@Schoolzen';
+  softwareCompanyLink: string = 'https://schoolzen.in';
   adminId!: any;
   constructor(private router: Router, private schoolService: SchoolService, private adminAuthService: AdminAuthService) { }
 
@@ -54,11 +54,11 @@ export class FooterComponent implements OnInit {
     this.schoolService.getSchool(this.adminId).subscribe((res: any) => {
       if (res) {
         this.schoolInfo = res;
-        this.whatsapp = 'https://wa.me/919302798269'
-        this.facebook = 'https://www.facebook.com/profile.php?id=61563830046242';
-        this.linkedin = 'https://www.linkedin.com/company/schooliya-official';
-        this.instagram = 'https://www.instagram.com/schooliya_official';
-        this.youtube = 'https://www.youtube.com/@Schooliya-f8f';
+        this.whatsapp = 'https://wa.me/9893830679'
+        this.facebook = 'https://www.facebook.com/profile.php?id=61587578035485';
+        this.linkedin = 'https://www.linkedin.com/company/schoolzen';
+        this.instagram = 'https://www.instagram.com/schoolzen_official/';
+        this.youtube = 'https://www.youtube.com/@Schoolzen';
 
       }
     })
