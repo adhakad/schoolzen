@@ -283,7 +283,7 @@ export class AdminStudentMarksheetComponent implements OnInit {
   private getPrintOneMarksheetContent(): string {
     let schoolName = this.schoolInfo.schoolName;
     let city = this.schoolInfo.city;
-    let schoolLogo = this.schoolInfo.schoolLogo; // Get the school logo URL
+    let schoolLogo = this.schoolInfo.schoolLogo;
 
     let printHtml = '<html>';
     printHtml += '<head>';
@@ -293,21 +293,23 @@ export class AdminStudentMarksheetComponent implements OnInit {
     printHtml += 'div {margin: 0; padding: 0;}';
     printHtml += '.page-wrapper { position: relative; min-height: 100vh; page-break-after: always; }';
     printHtml += '.page-wrapper:last-child { page-break-after: auto; }';
-    printHtml += '.student-container { position: relative; width: 100%; height: 100%; }';
-    printHtml += '.custom-container {font-family: Arial, sans-serif;overflow: auto; width: 100%; height: auto; box-sizing: border-box; position: relative; z-index: 2;}';
+
+    // ✅ FIX 1: min-height add kiya taaki watermark ko height mile
+    printHtml += '.student-container { position: relative; width: 100%; min-height: 100vh; }';
+
+    // ✅ FIX 2: z-index hataya, watermark ke upar nahi aayega ab
+    printHtml += '.custom-container {font-family: Arial, sans-serif; overflow: auto; width: 100%; height: auto; box-sizing: border-box; position: relative;}';
+
     printHtml += '.table-container {width: 100%;height: auto; background-color: #fff;border: 2px solid #707070; box-sizing: border-box;}';
     printHtml += '.logo { height: 95px;margin-top:15px;margin-left:10px;}';
     printHtml += '.school-name {display: flex; align-items: center; justify-content: center; text-align: center; }';
     printHtml += '.school-name h3 { color: #0a0a0a !important; font-size: 26px !important;font-weight: bolder;margin-top:-140px !important; margin-bottom: 0 !important; }';
-
     printHtml += '.address{margin-top: -45px;}';
     printHtml += '.address p{font-size:18px;margin-top: -15px !important;}';
     printHtml += '.title-lable {text-align: center;margin-top: 0px;margin-bottom: 0;}';
     printHtml += '.title-lable p {color: #0a0a0a !important;font-size: 22px;font-weight: bold;letter-spacing: .5px;}';
-
     printHtml += '.info-table {width:100%;color: #0a0a0a !important;border: none;font-size: 18px;margin-top: 1.20vh;margin-bottom: 1vh;display: inline-table;}';
     printHtml += '.table-container .info-table th, .table-container .info-table td{color: #0a0a0a !important;text-align:left;padding-left:15px;padding-top:5px;padding-bottom:5px;}';
-
     printHtml += '.custom-table {width: 100%;color: #0a0a0a !important;border-collapse:collapse;margin-bottom: 20px;display: inline-table;border-radius:5px}';
     printHtml += '.custom-table th{min-height: 48px;text-align: center;border:1px solid #707070;line-height:25px;font-size: 18px;}';
     printHtml += '.custom-table tr{height: 48px;}';
@@ -322,8 +324,8 @@ export class AdminStudentMarksheetComponent implements OnInit {
     printHtml += ' top: 0;';
     printHtml += ' left: 0;';
     printHtml += ' width: 100%;';
-    printHtml += ' height: 100vh;';
-    printHtml += ' z-index: 1000;';
+    printHtml += ' height: 100%;';
+    printHtml += ' z-index: 1;';
     printHtml += ' pointer-events: none;';
     printHtml += '}';
 
@@ -341,11 +343,12 @@ export class AdminStudentMarksheetComponent implements OnInit {
     printHtml += '@media print {';
     printHtml += ' .page-wrapper { page-break-after: always; height: 100vh; }';
     printHtml += ' .page-wrapper:last-child { page-break-after: auto; }';
+    printHtml += ' .student-container { min-height: 100vh; }';
     printHtml += ' .watermark-container { ';
     printHtml += '   -webkit-print-color-adjust: exact !important; ';
     printHtml += '   color-adjust: exact !important; ';
     printHtml += '   print-color-adjust: exact !important;';
-    printHtml += '   position: fixed !important;';
+    printHtml += '   position: absolute !important;';
     printHtml += ' }';
     printHtml += ' .watermark-logo { ';
     printHtml += '   -webkit-print-color-adjust: exact !important; ';
@@ -373,6 +376,7 @@ export class AdminStudentMarksheetComponent implements OnInit {
       printHtml += '</div>';
       printHtml += '</div>';
     });
+
     printHtml += '</body></html>';
     return printHtml;
   }
